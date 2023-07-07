@@ -1,0 +1,34 @@
+FUNCTION sum_of_distinct_elements(set1, set2)
+VAR
+    distinct := []  // an empty array to store distinct elements.
+
+BEGIN  
+    // Looping through each element of set1.
+    FOR elem IN set1 DO
+        // Checking if the element is already present in the distinct array.
+        IF elem NOT IN distinct THEN
+            //  add it to the distinct array.
+            ADD elem TO distinct
+        END IF
+    END FOR
+    
+    // Looping through each element of set2.
+    FOR elem IN set2 DO
+        // Checking if the element is already present in the distinct array.
+        IF elem NOT IN distinct THEN
+            // add it to the distinct array.
+            ADD elem TO distinct
+        END IF
+    END FOR
+    
+    sum := 0  // Initialize a variable sum to 0.
+    
+    // Looping through each element of the distinct array.
+    FOR elem IN distinct DO
+        // Add the current element to the sum variable.
+        sum := sum + elem
+    END FOR
+    
+    RETURN sum  // Return the sum variable.
+    
+END 

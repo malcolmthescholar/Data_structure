@@ -1,0 +1,51 @@
+// Here's the implementation of a requested dot_product procedure:
+
+
+
+PROCEDURE dot_product(v1, v2)
+VAR
+    ps := 0
+BEGIN
+    FOR i IN v1 DO
+        // Calculates the dot product of two vectors.
+        ps := v1[i] * v2[i]
+    END_FOR 
+       
+END
+
+
+// Here's the algorithm that determines whether two vectors are orthogonal for n pairs of given vectors using the `dot_product` procedure:
+
+PROCEDURE orthogonal_vectors(vectors)
+VAR
+    orthogonal_pairs := []
+BEGIN
+    // Determines whether the pairs of vectors in the input list are orthogonal.
+    FOR i IN vectors STEP 1 DO
+        FOR j FROM i +1 TO vectors STEP 2  DO
+            IF (dot_product(vectors[i], vectors[j]) == 0) THEN
+                ADD i and j TO orthogonal_pairs
+            END_IF
+        END_FOR
+    END_FOR
+    // list: A list of tuples, each containing the indices of the orthogonal vector pairs.
+END
+
+
+// Here's the modified algorithm that uses the `dot_product` function instead of a procedure:
+
+FUNCTION orthogonal_vectors(vectors, dot_product)
+VAR
+    orthogonal_pairs := []
+BEGIN
+     FOR i IN vectors STEP 1 DO
+        FOR j FROM i +1 TO vectors STEP 2  DO
+            IF (dot_product(vectors[i], vectors[j]) == 0) THEN
+                ADD i and j TO orthogonal_pairs
+            END_IF
+        END_FOR
+    END_FOR
+    // list: A list of tuples, each containing the indices of the orthogonal vector pairs.
+    RETURN orthogonal_pairs ;
+END
+
